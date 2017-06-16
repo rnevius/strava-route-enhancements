@@ -1,4 +1,5 @@
 const path = require('path');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -6,9 +7,21 @@ module.exports = {
     filename: 'app.js'
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: "babel-loader"
+        }]
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: "babel-loader"
+        }]
+      }
     ]
-  }
+  },
 }
